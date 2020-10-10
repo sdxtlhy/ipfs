@@ -3,42 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>批處理文件安裝多成ipfs星際節點(適合win7，win8，win10)</title>
-    <style type="text/css">
-        h1{
-            text-align: center;
-            font-size: 50px;
-        }
-    </style>
 </head>
 <body>
-    <h1>Hello
-批處理文件安裝多成ipfs星際節點(適合win7，win8，win10)
+  <h2>  批處理文件安裝多成ipfs星際節點(適合win7，win8，win10)</h2>
 
-設置多成IPFS星際去中心化站點
-此文适合windows 7, windows8,Windows 10 32位/64位操作系統安裝go-ipfs 0.7.0
-https://github.com/ipfs/go-ipfs/releases/tag/v0.7.0
-由以上ipfs官网下载适合自己电脑的安装文件
-go-ipfs_v0.7.0_windows-386.zip https://github.com/ipfs/go-ipfs/releases/download/v0.7.0/go-ipfs_v0.7.0_windows-386.zip
-以上文件適合Windows 32位操作系統
+<p>設置多成IPFS星際去中心化站點</p>
+<p>此文适合windows 7, windows8,Windows 10 32位/64位操作系統安裝go-ipfs 0.7.0</p>
+<p><a href="https://github.com/ipfs/go-ipfs/releases/tag/v0.7.0">https://github.com/ipfs/go-ipfs/releases/tag/v0.7.0</a></p>
+<p>由以上ipfs官网下载适合自己电脑的安装文件</p>
+<p>go-ipfs_v0.7.0_windows-386.zip <a href="https://github.com/ipfs/go-ipfs/releases/download/v0.7.0/go-ipfs_v0.7.0_windows-386.zip">https://github.com/ipfs/go-ipfs/releases/download/v0.7.0/go-ipfs_v0.7.0_windows-386.zip</a></p>
+<p>以上文件適合Windows 32位操作系統</p>
 
-go-ipfs_v0.7.0_windows-amd64.zip https://github.com/ipfs/go-ipfs/releases/download/v0.7.0/go-ipfs_v0.7.0_windows-amd64.zip
-以上文件適合Windows 64位操作系統。
+<p>go-ipfs_v0.7.0_windows-amd64.zip <a href="https://github.com/ipfs/go-ipfs/releases/download/v0.7.0/go-ipfs_v0.7.0_windows-amd64.zip">https://github.com/ipfs/go-ipfs/releases/download/v0.7.0/go-ipfs_v0.7.0_windows-amd64.zip</a></p>
+<p>以上文件適合Windows 64位操作系統。</p>
 
-解壓縮zip文件到c:盤根目錄下，把go-ipfs目錄剪切到c盤根目錄下。
+<p>解壓縮zip文件到c:盤根目錄下，把go-ipfs目錄剪切到c盤根目錄下。</p>
 
-把setduosuccess.zip文件複製到c:\go-ipfs下，然後解壓縮到c:\go-ipfs下，找到setup_ipfs.bat，右鍵選擇 “以管理員身份運行”。儅運行結束后，重啓就可以了。
-setduosuccess.zip 下載鏈接1 https://github.com/sdxtlhy/ipfslhy/files/5337712/setduosuccess.zip
-下載鏈接2(百度網盤) https://pan.baidu.com/s/11-TVAJPEwNm5LpyZW9JKnQ 提取码：ipfs
+<p>把setduosuccess.zip文件複製到c:\go-ipfs下，然後解壓縮到c:\go-ipfs下，找到setup_ipfs.bat，右鍵選擇 “以管理員身份運行”。儅運行結束后，重啓就可以了。</p>
+<p>setduosuccess.zip 下載鏈接1 <a href="https://github.com/sdxtlhy/ipfslhy/files/5337712/setduosuccess.zip">https://github.com/sdxtlhy/ipfslhy/files/5337712/setduosuccess.zip</a></p>
+<p>下載鏈接2(百度網盤) <a href="https://pan.baidu.com/s/11-TVAJPEwNm5LpyZW9JKnQ">https://pan.baidu.com/s/11-TVAJPEwNm5LpyZW9JKnQ</a> 提取码：ipfs</p>
 
-系統重啓後，打開瀏覽器輸入 http://127.0.0.1:8080/ipns/QmSeJ41iXwebzm3KPTixBc3zoetBD61df76BRjE4RuY4YB/ 使用/ipns訪問方式。
-或者 http://127.0.0.1:8080 ,會自動轉向到最後獲取並固定的/ipfs/hash訪問方式。保存書簽時，不要保存/ipfs/hash的網址，因爲網站數據更新頻繁，hash會經常更新，必須修改為儘保存到”http://127.0.0.1:8080“，ipfs_pin計劃任務會每小時啓動檢測獲取最新hash並固定（解固舊hash），並修改配置文件RootRedirect到/ipfs/最新hash。http://127.0.0.1:5001/webui 可以查看本節點。
-uninstall.bat提供卸載，同樣也需右鍵選擇 “以管理員身份運行”。
+<p>系統重啓後，打開瀏覽器輸入 http://127.0.0.1:8080/ipns/QmSeJ41iXwebzm3KPTixBc3zoetBD61df76BRjE4RuY4YB/ 使用/ipns訪問方式。
+或者 http://127.0.0.1:8080 ,會自動轉向到最後獲取並固定的/ipfs/hash訪問方式。保存書簽時，不要保存/ipfs/hash的網址，因爲網站數據更新頻繁，hash會經常更新，必須修改為儘保存到 http://127.0.0.1:8080 ，ipfs_pin計劃任務會每小時啓動檢測獲取最新hash並固定（解固舊hash），並修改配置文件RootRedirect到/ipfs/最新hash。http://127.0.0.1:5001/webui 可以查看本節點。
+uninstall.bat提供卸載，同樣也需右鍵選擇 “以管理員身份運行”。</p>
 
-内網穿透參見 https://www.duosuccess.com/bbs/viewtopic.php?f=6&t=4814
-或者安裝花生殼，https://hsk.oray.com/download/
-注冊賬號，做個免費版的自定義映射，應用類型 HTTP,外網域名選擇 免費贈送的域名即可，外網端口80，内網主機 127.0.0.1，内網端口8080，訪問限制：不限制。任意客戶端（電腦，手機，平板等等）就都可以使用域名直接訪問自己設置的節點了。
+<p>内網穿透參見 <a href="https://www.duosuccess.com/bbs/viewtopic.php?f=6&t=4814">https://www.duosuccess.com/bbs/viewtopic.php?f=6&t=4814</a></p>
+<p>或者安裝花生殼，<a href="https://hsk.oray.com/download/">https://hsk.oray.com/download/</a></p>
+<p>注冊賬號，做個免費版的自定義映射，應用類型 HTTP,外網域名選擇 免費贈送的域名即可，外網端口80，内網主機 127.0.0.1，内網端口8080，訪問限制：不限制。任意客戶端（電腦，手機，平板等等）就都可以使用域名直接訪問自己設置的節點了。</p>
 
-設置ipfs多成節點服務器因為需要持續開機運行，所以低功耗的小主機或者windows版本的小平板電腦比較適合（需取消睡眠及禁止關閉網卡）。要點：低功耗，和家用路由器功耗相差無幾，無需散熱風扇（靜音）。這樣的設備在圖形界面下操作會略顯遲鈍，但是作為僅供自己的便攜設備訪問使用還是綽綽有餘，且響應快速，滿足需求。平板電腦在此須x86或amd64指令處理器，此文暫不支持arm指令處理器（雖然ipfs官網現在提供arm指令go-ipfs版本）。稍高性能的windows pc（筆記本電腦或台式機）也是可以設置ipfs節點的，如果不介意電費也可長時間開機運行。
- </h1>   
+<p>設置ipfs多成節點服務器因為需要持續開機運行，所以低功耗的小主機或者windows版本的小平板電腦比較適合（需取消睡眠及禁止關閉網卡）。要點：低功耗，和家用路由器功耗相差無幾，無需散熱風扇（靜音）。這樣的設備在圖形界面下操作會略顯遲鈍，但是作為僅供自己的便攜設備訪問使用還是綽綽有餘，且響應快速，滿足需求。平板電腦在此須x86或amd64指令處理器，此文暫不支持arm指令處理器（雖然ipfs官網現在提供arm指令go-ipfs版本）。稍高性能的windows pc（筆記本電腦或台式機）也是可以設置ipfs節點的，如果不介意電費也可長時間開機運行。</p>
+
+<p>windows 7設置啟動計劃任務，因提示【目前没有可用的登录服务器处理登录请求】而無法正常啟動ipfs daemon，替代方法：1.計算機，右鍵，管理，任務計劃程序，任務計劃程序庫，左鍵單擊 任務計劃程序庫，找到ipfs_start,右鍵菜單，依次點擊 結束，禁用。2.打開 c:\go-ipfs目錄，找到ipfsstart.bat，右鍵，創建快捷方式，3.找到 ipfsstart-快捷方式，右鍵 剪切，4.開始，找到 啟動，右鍵 瀏覽，右鍵 粘貼。把ipfsstart-快捷方式 放到啟動項。重啟電腦。</p>
 </body>
 </html>
