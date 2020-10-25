@@ -20,13 +20,15 @@
 <p>解壓縮zip文件到c:盤根目錄下，把go-ipfs目錄剪切到c盤根目錄下。</p>
 
 <p>把<a href="/ipfs/setduosuccess.zip">setduosuccess.zip</a>文件複製到c:\go-ipfs下，然後解壓縮到c:\go-ipfs下，找到setup_ipfs.bat，右鍵選擇 “以管理員身份運行”。儅運行結束后，重啓就可以了。</p>
-<p><a href="/ipfs/setduosuccess.zip">setduosuccess.zip</a> 下載鏈接 <a href="/ipfs/setduosuccess.zip">https://sdxtlhy.github.io/ipfs/setduosuccess.zip</a>最後修改日期2020-10-11 19:20</p>
+<p><a href="/ipfs/setduosuccess.zip">setduosuccess.zip</a> 下載鏈接 <a href="/ipfs/setduosuccess.zip">https://sdxtlhy.github.io/ipfs/setduosuccess.zip</a></p>
 
 
 <p>系統重啓後，打開瀏覽器輸入 http://127.0.0.1:8080/ipns/QmSeJ41iXwebzm3KPTixBc3zoetBD61df76BRjE4RuY4YB/ 使用/ipns訪問方式。
 或者 http://127.0.0.1:8080 ,會自動轉向到最後獲取並固定的/ipfs/hash訪問方式。保存書簽時，不要保存/ipfs/hash的網址，因爲網站數據更新頻繁，hash會經常更新，必須修改為儘保存到 http://127.0.0.1:8080 ，ipfs_pin計劃任務會每小時啓動檢測獲取最新hash並固定（解固舊hash），並修改配置文件RootRedirect到/ipfs/最新hash。http://127.0.0.1:5001/webui 可以查看本節點。
 uninstall.bat提供卸載，同樣也需右鍵選擇 “以管理員身份運行”。</p>
-<p><h4> <font color="red">重要提示</font>(最新<a href="/ipfs/setduosuccess.zip">setduosuccess.zip</a>，如已安裝以前版本，可以下載最新<a href="/ipfs/setduosuccess.zip">setduosuccess.zip</a>解壓到c:\go-ipfs覆蓋舊文件即可)：</h4>本文目前提供的安裝方式，以ip加端口或者域名加端口方式訪問會自動轉向到最新/ipfs/hash，此方式訪問快速，保存書籤只能保存IP+端口或者域名+端口，即保存書籤後，必須修改書籤去掉/ipfs/hash,只保存IP:端口或者域名:端口。但是/ipns/QmSeJ41iXwebzm3KPTixBc3zoetBD61df76BRjE4RuY4YB方式訪問有時會略顯遲鈍。如想以/ipns/QmSeJ41iXwebzm3KPTixBc3zoetBD61df76BRjE4RuY4YB方式訪問快速，可自行修改checkhash.bat文件的【】四行命令，去掉rem即可。但缺點是有時獲取最新hash會不太及時。魚與熊掌不可兼得。</p>
+<p><h4> <font color="red">重要提示【最後修改日期2020-10-25 14:50】</font>(最新<a href="/ipfs/setduosuccess.zip">setduosuccess.zip</a>，如已安裝以前版本，務必下載最新<a href="/ipfs/setduosuccess.zip">setduosuccess.zip</a>解壓到c:\go-ipfs覆蓋舊文件，重啟即可)：</h4>本文目前提供的安裝方式，以ip加端口或者域名加端口方式訪問會自動轉向到最新/ipfs/hash，此方式訪問快速，保存書籤只能保存IP+端口或者域名+端口，即保存書籤後，必須修改書籤去掉/ipfs/hash,只保存IP:端口或者域名:端口。但是/ipns/QmSeJ41iXwebzm3KPTixBc3zoetBD61df76BRjE4RuY4YB方式訪問有時會略顯遲鈍。如想以/ipns/QmSeJ41iXwebzm3KPTixBc3zoetBD61df76BRjE4RuY4YB方式訪問快速，可自行修改checkhash.bat文件的【】四行命令，去掉rem即可。但缺點是有時獲取最新hash會不太及時。魚與熊掌不可兼得。</p>
+<p>修改日誌：
+2020-10-25 14:50 修正ipfsstart.bat啟動時，因計劃任務checkhash.bat啟動不合時宜關閉ipfs.exe,導致ipfsstart.bat啟動出錯。</p>
 
 <p>内網穿透參見 <a href="https://www.duosuccess.com/bbs/viewtopic.php?f=6&t=4814">https://www.duosuccess.com/bbs/viewtopic.php?f=6&t=4814</a></p>
 <p>或者安裝花生殼，<a href="https://hsk.oray.com/download/">https://hsk.oray.com/download/</a></p>
