@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ubuntu16.04server版设置Duosuccess星际节点(i386)</title>
+</head>
+<body>
+<p><a href="https://sdxtlhy.github.io/">【首頁】</a></p>
+  <h2>  #Ubuntu16.04server版设置Duosuccess星际节点(i386)</h2>
+<p> #本文網址<a href="https://sdxtlhy.github.io/ipfs/ubuntu16.04server.html">https://sdxtlhy.github.io/ipfs/ubuntu16.04server.html</a></p>
+<p>#設置多成IPFS星際去中心化站點<br/>
+#此文适合Ubuntu 16.04.6 server i386 32位操作系統安裝go-ipfs 0.7.0<br/>
+#默認使用root用戶安裝在/root/目錄<br/>
+#設置root密碼<br/>
+sudo passwd root<br/>
+#使用root登錄<br/>
+su<br/>
+cd /root</p>
+
+<p>#開啟無線網卡<br/>
+ifconfig -a<br/>
+#查找無線網卡名，類似“wlp1s0”<br/>
+nano /etc/network/interfaces<br/>
+#添加如下內容<br/>
+auto wlp1s0無線網卡名<br/>
+iface wlp1s0無線網卡名 inet dhcp<br/>
+wpa-ssid WIFI名稱<br/>
+wpa-psk WIFI密碼<br/>
+#輸入完成後，保存退出<br/>
+ifdown wlp1s0 #關閉網卡<br/>
+ifup -v wlp1s0 #開啟網卡</p>
+
+<p>#下載go-ipfs 0.7.0 linux i386<br/>
+wget https://github.com/ipfs/go-ipfs/releases/download/v0.7.0/go-ipfs_v0.7.0_linux-386.tar.gz<br/>
+#解壓go-ipfs<br/>
+tar xvfz go-ipfs_v0.7.0_linux-386.tar.gz<br/>
+#移動ipfs執行文件至/usr/local/bin<br/>
+mv go-ipfs/ipfs /usr/local/bin/ipfs<br/>
+#初始化ipfs<br/>
+ipfs init</p>
+
+<p>#獲取ubuntusetup.tar設置文件<br/>
+wget https://sdxtlhy.github.io/ipfs/ubuntusetup.tar<br/>
+#解壓<br/>
+tar -xf ubuntusetup.tar<br/>
+chmod +x checkhash.sh<br/>
+chmod +x startipfs.sh<br/>
+./checkhash.sh</p>
+
+<p>#修改ipfs參數文件,可參考https://sdxtlhy.github.io/ipfs/config文件<br/>
+wget https://sdxtlhy.github.io/ipfs/config<br/>
+nano .ipfs/config</p>
+
+<p>#設置定時計劃：每小時零5分時啟動,path中需包含/usr/local/bin<br/>
+nano /etc/crontab<br/>
+5 * * * * root /root/checkhash.sh<br/>
+#設置開機啟動任務,在exit語句前添加<br/>
+nano /etc/rc.local<br/>
+su -c /root/startipfs.sh</p>
+
+<p>#設置Ubuntu禁止休眠<br/>
+sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target<br/>
+#開啟ssh<br/>
+service sshd start
+#設置結束<br/>
+reboot</p>
+
+</body>
+</html>
