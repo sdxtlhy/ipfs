@@ -31,6 +31,12 @@ ifdown wlp1s0 #關閉網卡<br/>
 ifup -v wlp1s0 #開啟網卡</p>
 
 <p>#下載go-ipfs 0.7.0 linux i386<br/>
+#github.com網速不佳時，也可從下面鏡像站下載</br>
+#<a href="http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.7.0_linux-386.tar.gz">http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.7.0_linux-386.tar.gz</a></br>
+#<a href="http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.7.0_linux-amd64.tar.gz">http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.7.0_linux-amd64.tar.gz</a></br>
+#<a href="http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.7.0_windows-386.zip">http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.7.0_windows-386.zip</a></br>
+#<a href="http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.7.0_windows-amd64.zip">http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.7.0_windows-amd64.zip</a></br>
+#wget http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.7.0_linux-386.tar.gz</br>
 wget https://github.com/ipfs/go-ipfs/releases/download/v0.7.0/go-ipfs_v0.7.0_linux-386.tar.gz<br/>
 #解壓go-ipfs<br/>
 tar xvfz go-ipfs_v0.7.0_linux-386.tar.gz<br/>
@@ -48,6 +54,22 @@ chmod +x startipfs.sh<br/>
 ./checkhash.sh</p>
 
 <p>#修改ipfs參數文件,可參考https://sdxtlhy.github.io/ipfs/config文件<br/>
+#  "API": {<br/>
+#    "HTTPHeaders": {<br/>
+#      "Access-Control-Allow-Methods": [<br/>
+#        "PUT",<br/>
+#        "POST"<br/>
+#      ],<br/>
+#     "Access-Control-Allow-Origin": [<br/>
+#      "http://127.0.0.1:5001",<br/>
+#      "http://192.168.0.200:5001" 此處修改為本機的IP,可通過ip:5001/webui查看ipfs站點<br/>
+#      ]<br/>
+#    }<br/>
+#  },<br/>
+#  "Addresses": {<br/>
+#   "API": "/ip4/0.0.0.0/tcp/5001",<br/>
+#    "Gateway": "/ip4/0.0.0.0/tcp/8080",<br/>
+#  },<br/>
 wget https://sdxtlhy.github.io/ipfs/config<br/>
 nano .ipfs/config</p>
 
@@ -61,7 +83,7 @@ su -c /root/startipfs.sh</p>
 <p>#設置Ubuntu禁止休眠<br/>
 sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target<br/>
 #開啟ssh<br/>
-service sshd start
+service sshd start<br/>
 #設置結束<br/>
 reboot</p>
 
