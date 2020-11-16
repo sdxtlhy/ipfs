@@ -70,7 +70,7 @@ chmod +x startipfs.sh<br/>
 <p>#設置定時計劃：每小時零5分時啟動,<font color="red">path中必須包含/usr/local/bin</font><br/>
 nano /etc/crontab<br/>
 5 * * * * root /root/checkhash.sh<br/>
-#設置開機啟動任務,在exit語句前添加<br/>
+#設置開機啟動任務,添加開機啟動ipfs daemon及開放防火墻端口<br/>
 nano /etc/rc.local<br/>
 su -c /root/startipfs.sh<br/>
 #/etc/rc.local實際鏈接/etc/rc.d/rc.local,設置此文件為可執行<br/>
