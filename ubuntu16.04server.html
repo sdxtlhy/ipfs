@@ -45,14 +45,6 @@ mv go-ipfs/ipfs /usr/local/bin/ipfs<br/>
 #初始化ipfs<br/>
 ipfs init</p>
 
-<p>#獲取ubuntusetup.tar設置文件<br/>
-wget https://sdxtlhy.github.io/ipfs/ubuntusetup.tar<br/>
-#解壓<br/>
-tar -xf ubuntusetup.tar<br/>
-chmod +x checkhash.sh<br/>
-chmod +x startipfs.sh<br/>
-./checkhash.sh</p>
-
 <p>#修改ipfs參數文件,可參考https://sdxtlhy.github.io/ipfs/config文件<br/>
 #  "API": {<br/>
 #    "HTTPHeaders": {<br/>
@@ -72,6 +64,14 @@ chmod +x startipfs.sh<br/>
 #  },<br/>
 wget https://sdxtlhy.github.io/ipfs/config<br/>
 nano .ipfs/config</p>
+
+<p>#獲取ubuntusetup.tar設置文件<br/>
+wget https://sdxtlhy.github.io/ipfs/ubuntusetup.tar<br/>
+#解壓<br/>
+tar -xf ubuntusetup.tar<br/>
+chmod +x checkhash.sh<br/>
+chmod +x startipfs.sh<br/>
+./checkhash.sh</p>
 
 <p>#設置定時計劃：每小時零5分時啟動,path中需包含/usr/local/bin<br/>
 nano /etc/crontab<br/>
