@@ -2,9 +2,11 @@
 
 echo install $HOSTTYPE ...
 if  [ $HOSTTYPE = "x86_64" ]; then
+    rm go-ipfs_v0.7.0_linux-amd64.tar.gz
     wget http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.7.0_linux-amd64.tar.gz
     tar xvfz go-ipfs_v0.7.0_linux-amd64.tar.gz
 else
+    rm go-ipfs_v0.7.0_linux-386.tar.gz
     wget http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.7.0_linux-386.tar.gz
     tar xvfz go-ipfs_v0.7.0_linux-386.tar.gz
 fi
@@ -25,12 +27,13 @@ CONFIGBAKNAME=".ipfs/config.$BAKNUMSTR"
 mv .ipfs/config $CONFIGBAKNAME
 mv config .ipfs/config
 
+rm centos7setup.tar
 wget https://sdxtlhy.github.io/ipfs/centos7setup.tar
 #解壓
 tar -xf centos7setup.tar
 chmod +x checkhash.sh
 chmod +x startipfs.sh
-date >>ipns.id
+date >ipns.id
 #startipfs.sh中包含了firewall-cmd --add-port=8080/tcp及5001/tcp，防火墻開放8080及5001 tcp端口
 ./startipfs.sh
 ./checkhash.sh
@@ -50,6 +53,4 @@ fi
 chmod +x /etc/rc.d/rc.local
 
 #reboot
-
-
 
