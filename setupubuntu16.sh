@@ -35,7 +35,6 @@ date >>ipns.id
 
 CRONTABBAKNAME="/etc/crontab.$BAKNUMSTR"
 cp /etc/crontab $CRONTABBAKNAME
-sed -i "s/PATH=\/sbin:/PATH=\/usr\/local\/bin:\/sbin:/g" /etc/crontab
 sed -i '/* * * * root \/root\/checkhash.sh/d' /etc/crontab
 echo "$(date +%M) * * * * root /root/checkhash.sh" >>/etc/crontab
 
