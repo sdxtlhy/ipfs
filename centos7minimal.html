@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CentOS7minimal设置Duosuccess星际节点(i386)</title>
+    <title>CentOS7minimal设置Duosuccess星际节点(i386或amd64)</title>
 </head>
 <body>
 <p><a href="https://sdxtlhy.github.io/">【首頁】</a></p>
-  <h2>  #CentOS7minimal设置Duosuccess星际节点(i386)</h2>
+  <h2>  #CentOS7minimal设置Duosuccess星际节点(i386或amd64)</h2>
 <p> #本文網址<a href="https://sdxtlhy.github.io/ipfs/centos7minimal.html">https://sdxtlhy.github.io/ipfs/centos7minimal.html</a></p>
 <p>#設置多成IPFS星際去中心化站點<br/>
-#此文适合 <font color="red">CentOS7minimal i386</font>32位操作系統安裝go-ipfs 0.7.0<br/>
+#此文适合 <font color="red">CentOS7minimal i386或amd64</font>32位或64位操作系統安裝go-ipfs 0.7.0<br/>
 #默認使用root用戶安裝在/root/目錄<br/>
 cd /root<br/>
 #系統內置網絡配置界面，可設置有線或無線網卡連接,<font color="green">務必選中[X]Automatically connect</font><br/>
@@ -31,56 +31,18 @@ yum -y install nano<br/></p>
 #<a href="http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.7.0_windows-386.zip">http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.7.0_windows-386.zip</a></br>
 #<a href="http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.7.0_windows-amd64.zip">http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.7.0_windows-amd64.zip</a></br>
 #wget http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.7.0_linux-386.tar.gz</br>
-wget https://github.com/ipfs/go-ipfs/releases/download/v0.7.0/go-ipfs_v0.7.0_linux-386.tar.gz<br/>
-#解壓go-ipfs<br/>
-tar xvfz go-ipfs_v0.7.0_linux-386.tar.gz<br/>
-#移動ipfs執行文件至/usr/local/bin<br/>
-mv go-ipfs/ipfs /usr/local/bin/ipfs<br/>
-#初始化ipfs<br/>
-ipfs init</p>
+#wget https://github.com/ipfs/go-ipfs/releases/download/v0.7.0/go-ipfs_v0.7.0_linux-386.tar.gz<br/>
 
-<p>#修改ipfs參數文件,可參考https://sdxtlhy.github.io/ipfs/config文件,nano編輯器CTRL+O保存，CTRL+X退出<br/>
-#  "API": {<br/>
-#    "HTTPHeaders": {<br/>
-#      "Access-Control-Allow-Methods": [<br/>
-#        "PUT",<br/>
-#        "POST"<br/>
-#      ],<br/>
-#     "Access-Control-Allow-Origin": [<br/>
-#      "http://127.0.0.1:5001",<br/>
-#      "http://192.168.0.200:5001" <font color="green">此處修改為本機的IP</font>,可通過ip:5001/webui查看ipfs節點狀態<br/>
-#      ]<br/>
-#    }<br/>
-#  },<br/>
-#  "Addresses": {<br/>
-#   "API": "/ip4/0.0.0.0/tcp/5001",<br/>
-#    "Gateway": "/ip4/0.0.0.0/tcp/8080",<br/>
-#  },<br/>
-wget https://sdxtlhy.github.io/ipfs/config<br/>
-nano .ipfs/config</p>
+#<a href="https://sdxtlhy.github.io/ipfs/setupcentos7.sh">https://sdxtlhy.github.io/ipfs/setupcentos7.sh</a><br/>
+wget https://sdxtlhy.github.io/ipfs/setupcentos7.sh<br/>
+chmod +x setupcentos7.sh<br/>
+#setupcentos7.sh安裝腳本中下載go-ipfs_v0.7.0_linux-....tar.gz時使用了http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.7.0_linux-....tar.gz鏡像網站，因測試時發現從https://github.com/ipfs/go-ipfs/releases/tag/v0.7.0官網下載時速度極慢。http://ipfslhy1.tpddns.cn:81為pc搭建的服務器，穩定性不如官網。<br/>
+./setupcentos7.sh<br/>
 
-<p>#獲取<a href="https://sdxtlhy.github.io/ipfs/centos7setup.tar">centos7setup.tar</a>設置文件<br/>
-wget https://sdxtlhy.github.io/ipfs/centos7setup.tar<br/>
-#解壓<br/>
-tar -xf centos7setup.tar<br/>
-chmod +x checkhash.sh<br/>
-chmod +x startipfs.sh<br/>
-#startipfs.sh中包含了firewall-cmd --add-port=8080/tcp及5001/tcp，防火墻開放8080及5001 tcp端口<br/>
-./startipfs.sh<br/>
-./checkhash.sh</p>
-
-<p>#設置定時計劃：每小時零5分時啟動,<font color="red">path中必須包含/usr/local/bin</font><br/>
-nano /etc/crontab<br/>
-5 * * * * root /root/checkhash.sh<br/>
-#設置開機啟動任務,添加開機啟動ipfs daemon及開放防火墻端口<br/>
-nano /etc/rc.local<br/>
-su -c /root/startipfs.sh<br/>
-#/etc/rc.local實際鏈接/etc/rc.d/rc.local,設置此文件為可執行<br/>
-chmod +x /etc/rc.d/rc.local<br/></p>
 
 <p>#設置CentOS禁止休眠<br/>
 sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target<br/>
-#設置結束<br/>
+#安裝完成<br/>
 reboot</p>
 
 <p>#啟動成功後，局域網設備使用http://ip:8080以ipfs/hash方式訪問，保存書籤只能保存IP+端口或者域名+端口，即保存書籤後，必須修改書籤去掉/ipfs/hash,只保存IP:端口或者域名:端口。或者http://ip:8080/ipns/QmSeJ41iXwebzm3KPTixBc3zoetBD61df76BRjE4RuY4YB/以ipns方式訪問。http://ip:5001/webui查看節點。在手機端或者其他電腦可以使用ssh監控管理節點服務器。</p>
