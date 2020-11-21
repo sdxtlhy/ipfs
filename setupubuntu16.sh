@@ -2,9 +2,11 @@
 
 echo install $HOSTTYPE ...
 if  [ $HOSTTYPE = 'x86_64' ]; then
+    rm go-ipfs_v0.7.0_linux-amd64.tar.gz
     wget http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.7.0_linux-amd64.tar.gz
     tar xvfz go-ipfs_v0.7.0_linux-amd64.tar.gz
 else
+    rm go-ipfs_v0.7.0_linux-386.tar.gz
     wget http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.7.0_linux-386.tar.gz
     tar xvfz go-ipfs_v0.7.0_linux-386.tar.gz
 fi
@@ -24,13 +26,13 @@ BAKNUMSTR=`date -d "$BAKNUM" +%s`
 CONFIGBAKNAME=".ipfs/config.$BAKNUMSTR"
 mv .ipfs/config $CONFIGBAKNAME
 mv config .ipfs/config
-
+rm ubuntusetup.tar
 wget https://sdxtlhy.github.io/ipfs/ubuntusetup.tar
 #解壓
 tar -xf ubuntusetup.tar
 chmod +x checkhash.sh
 chmod +x startipfs.sh
-date >>ipns.id
+date >ipns.id
 ./checkhash.sh
 
 CRONTABBAKNAME="/etc/crontab.$BAKNUMSTR"
@@ -46,7 +48,6 @@ if [ $? != 0 ];then
   echo "su -c /root/startipfs.sh" >>/etc/rc.local
   echo "exit 0" >>/etc/rc.local
 fi
-
 
 #reboot
 
