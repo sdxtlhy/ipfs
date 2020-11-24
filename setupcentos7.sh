@@ -1,5 +1,8 @@
 #!/bin/sh
 
+yum -y install psmisc
+yum -y install wget
+
 echo install $HOSTTYPE ...
 if  [ $HOSTTYPE = "x86_64" ]; then
     rm go-ipfs_v0.7.0_linux-amd64.tar.gz

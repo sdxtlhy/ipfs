@@ -1,5 +1,8 @@
 #!/bin/sh
 
+yum -y install psmisc
+yum -y install wget
+
 rm go-ipfs_v0.7.0_linux-amd64.tar.gz
 wget http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.7.0_linux-amd64.tar.gz
 tar xvfz go-ipfs_v0.7.0_linux-amd64.tar.gz
