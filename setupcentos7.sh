@@ -1,7 +1,6 @@
 #!/bin/sh
 
 yum -y install psmisc
-yum -y install wget
 
 echo install $HOSTTYPE ...
 if  [ $HOSTTYPE = "x86_64" ]; then
@@ -39,6 +38,7 @@ chmod +x startipfs.sh
 date >ipns.id
 #startipfs.sh中包含了firewall-cmd --add-port=8080/tcp及5001/tcp，防火墻開放8080及5001 tcp端口
 ./startipfs.sh
+echo "正在獲取最新hash數據，耗時較長，請耐心等待..."
 ./checkhash.sh
 
 CRONTABBAKNAME="/etc/crontab.$BAKNUMSTR"
@@ -54,6 +54,6 @@ if [ $? != 0 ];then
   echo "su -c /root/startipfs.sh" >>/etc/rc.d/rc.local
 fi
 chmod +x /etc/rc.d/rc.local
-
+echo "設置完成。"
 #reboot
 

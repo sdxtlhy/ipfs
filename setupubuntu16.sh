@@ -33,6 +33,7 @@ tar -xf ubuntusetup.tar
 chmod +x checkhash.sh
 chmod +x startipfs.sh
 date >ipns.id
+echo "正在獲取最新hash數據，耗時較長，請耐心等待..."
 ./checkhash.sh
 
 CRONTABBAKNAME="/etc/crontab.$BAKNUMSTR"
@@ -48,6 +49,6 @@ if [ $? != 0 ];then
   echo "su -c /root/startipfs.sh" >>/etc/rc.local
   echo "exit 0" >>/etc/rc.local
 fi
-
+echo "設置完成。"
 #reboot
 

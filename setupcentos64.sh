@@ -1,7 +1,13 @@
 #!/bin/sh
 
+IPSTR="ip$1"
+if  [ $IPSTR = "ip" ]; then 
+   echo "缺少ip，請重新運行。"
+   echo "./setupcentos64.sh xxx.xxx.xxx.xxx"  
+   exit 1
+fi
+
 yum -y install psmisc
-yum -y install wget
 
 rm go-ipfs_v0.7.0_linux-amd64.tar.gz
 wget http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.7.0_linux-amd64.tar.gz
@@ -29,6 +35,7 @@ chmod +x startipfs.sh
 date >ipns.id
 #startipfs.sh中包含了firewall-cmd --add-port=8080/tcp及5001/tcp，防火墻開放8080及5001 tcp端口
 ./startipfs.sh
+echo "正在獲取最新hash數據，耗時較長，請耐心等待..."
 ./checkhash.sh
 
 CRONTABBAKNAME="/etc/crontab.$BAKNUMSTR"
@@ -44,6 +51,6 @@ if [ $? != 0 ];then
   echo "su -c /root/startipfs.sh" >>/etc/rc.d/rc.local
 fi
 chmod +x /etc/rc.d/rc.local
-
+echo "設置完成。"
 #reboot
 
