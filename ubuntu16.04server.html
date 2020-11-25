@@ -31,19 +31,23 @@ ifdown wlp1s0 #關閉網卡<br/>
 ifup -v wlp1s0 #開啟網卡</p>
 
 <p>#下載go-ipfs 0.7.0 linux i386或amd64<br/>
+#go-ipfs 0.7.0官網下載鏈接<br/>
+#<a href="https://github.com/ipfs/go-ipfs/releases/download/v0.7.0/go-ipfs_v0.7.0_linux-386.tar.gz">https://github.com/ipfs/go-ipfs/releases/download/v0.7.0/go-ipfs_v0.7.0_linux-386.tar.gz</a></br>
+#<a href="https://github.com/ipfs/go-ipfs/releases/download/v0.7.0/go-ipfs_v0.7.0_linux-amd64.tar.gz">https://github.com/ipfs/go-ipfs/releases/download/v0.7.0/go-ipfs_v0.7.0_linux-amd64.tar.gz</a></br>
 #github.com網速不佳時，也可從下面鏡像站下載</br>
 #<a href="http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.7.0_linux-386.tar.gz">http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.7.0_linux-386.tar.gz</a></br>
 #<a href="http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.7.0_linux-amd64.tar.gz">http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.7.0_linux-amd64.tar.gz</a></br>
-#<a href="http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.7.0_windows-386.zip">http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.7.0_windows-386.zip</a></br>
-#<a href="http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.7.0_windows-amd64.zip">http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.7.0_windows-amd64.zip</a></br>
-#下載<a href=https://sdxtlhy.github.io/ipfs/setupubuntu16.sh>setupubuntu16.sh</a><br>
-#安装脚本下载源使用的镜像站<br/>
+
+#下載<a href=https://sdxtlhy.github.io/ipfs/setupubuntu16.sh>setupubuntu16.sh</a><br><br/><br/>
+#安装脚本下载源使用的镜像站，如無法下載可自行修改為go-ipfs官網下載鏈接<br/>
 wget https://sdxtlhy.github.io/ipfs/setupubuntu16.sh<br/>
 chmod +x setupubuntu16.sh<br/>
 ./setupubuntu16.sh<br/></p>
 
-<p>#設置Ubuntu禁止休眠<br/>
+<p>
+#禁止休眠<br/>
 sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target<br/>
+
 #開啟ssh<br/>
 service sshd start<br/>
 #設置結束<br/>
