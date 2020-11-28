@@ -36,6 +36,7 @@ chmod +x checkhash.sh
 chmod +x startipfs.sh
 date >ipns.id
 echo "Geting Duosuccess IPFS Latest Hash Data,please waiting..."
+rm checkhash.runing
 ./checkhash.sh
 
 CRONTABBAKNAME="/etc/crontab.$BAKNUMSTR"

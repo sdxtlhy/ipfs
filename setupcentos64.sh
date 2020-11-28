@@ -37,6 +37,7 @@ date >ipns.id
 #startipfs.sh中包含了firewall-cmd --add-port=8080/tcp及5001/tcp，防火墻開放8080及5001 tcp端口
 ./startipfs.sh
 echo "Geting Duosuccess IPFS Latest Hash Data,please waiting..."
+rm checkhash.runing
 ./checkhash.sh
 
 CRONTABBAKNAME="/etc/crontab.$BAKNUMSTR"
