@@ -20,7 +20,8 @@
   * [Linux 64bit](https://github.com/HelloZeroNet/ZeroBundle/raw/master/dist/ZeroBundle-linux64.tar.gz)<br/>
   * [Linux 32bit](https://github.com/HelloZeroNet/ZeroBundle/raw/master/dist/ZeroBundle-linux32.tar.gz)<br/>
 * 解压缩<br/>
-* 运行 `ZeroNet.exe` (win), `ZeroNet(.app)` (osx), `ZeroNet.sh` (linux)</p>
+* 运行 `ZeroNet.exe` (win), `ZeroNet(.app)` (osx), `ZeroNet.sh` (linux)<br/>
+* Linux版本提示:若要允许在 Web 界面上的远程连接，使用以下命令启动 ./ZeroNet.sh --ui_ip '*' --ui_restrict your.ip.address</p>
 <p>多成ZeroNet url<br/>
 <a href="http://127.0.0.1:43110/1AUHC6wpgF676cEd8uZX6cU8BucGU4KAP7">http://127.0.0.1:43110/1AUHC6wpgF676cEd8uZX6cU8BucGU4KAP7</a><br/></p>
 <p>無法更新到Duosuccess節點內容時可修改zeronet.conf文件<br/>
@@ -32,6 +33,10 @@
 <a href="https://github.com/ngosang/trackerslist">trackers_all.txt複製自此鏈接，最新內容可直接從此獲取</a><br/>-->
 <p> <a href="https://sdxtlhy.github.io/ipfs/zeronet.conf">zeronet.conf</a>設置參考<br/><br/>
 [global]<br/>
+tor = always<br/>
+open_browser = False<br/>
+keep_ssl_cert = <br/>
+language = zh<br/>
 ui_ip = *<br/>
 ui_host = <br/>
 &nbsp;&nbsp;&nbsp;127.0.0.1:43110<br/>
