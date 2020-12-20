@@ -30,6 +30,10 @@ chmod +x setupcentos7.sh<br/>
 ./setupcentos7.sh<br/>
 
 <p>
+#使用tuned-adm命令优化Linux系统性能<br/>
+#network-latency：源自延迟性能配置文件，它启用其他网络调整参数以提供较低的网络延迟。<br/>
+tuned-adm profile network-latency<br/>
+tuned-adm active<br/>
 #禁止休眠<br/>
 sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target<br/>
 #安裝完成<br/>
