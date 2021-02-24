@@ -1,28 +1,41 @@
 #!/bin/sh
 
-IPSTR="ip$1"
+IPFSVER="VER$1"
+if  [ $IPFSVER = "VER" ]; then 
+   echo "please enter go-ipfs_version ip then retry..."
+   echo "sample:"
+   echo "./setupcentos64.sh 0.8.0 xxx.xxx.xxx.xxx"  
+   exit 1
+fi
+
+IPSTR="ip$2"
 if  [ $IPSTR = "ip" ]; then 
-   echo "please enter ip，then retry..."
-   echo "./setupcentos64.sh xxx.xxx.xxx.xxx"  
+   echo "please enter go-ipfs_version ip then retry..."
+   echo "sample:"
+   echo "./setupcentos64.sh 0.8.0 xxx.xxx.xxx.xxx"  
    exit 1
 fi
 
 yum -y install psmisc
 
-rm go-ipfs_v0.8.0_linux-amd64.tar.gz
-rm .ipfs -r -f
-#wget https://github.com/ipfs/go-ipfs/releases/download/v0.8.0/go-ipfs_v0.8.0_linux-amd64.tar.gz
-#wget http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.8.0_linux-amd64.tar.gz
-wget http://106.13.206.237/go-ipfs_v0.8.0_linux-amd64.tar.gz
+export GO-IPFS_VERSION = $1
 
-tar xvfz go-ipfs_v0.8.0_linux-amd64.tar.gz
+rm go-ipfs_v${GO-IPFS_VERSION}_linux-amd64.tar.gz
+rm .ipfs -r -f
+killall ipfs
+rm /usr/local/bin/ipfs
+
+#wget https://github.com/ipfs/go-ipfs/releases/download/v${GO-IPFS_VERSION}/go-ipfs_v${GO-IPFS_VERSION}_linux-amd64.tar.gz
+wget http://106.13.206.237/go-ipfs_v${GO-IPFS_VERSION}_linux-amd64.tar.gz
+
+tar xvfz go-ipfs_v${GO-IPFS_VERSION}_linux-amd64.tar.gz
 mv go-ipfs/ipfs /usr/local/bin/ipfs
 
 #初始化ipfs
 ipfs init
 rm config
 wget https://sdxtlhy.github.io/ipfs/config
-sed -i "s/192.168.0.200/$1/g" config
+sed -i "s/192.168.0.200/$2/g" config
 
 BAKNUM=`date +"%Y-%m-%d %H:%M:%S"`
 BAKNUMSTR=`date -d "$BAKNUM" +%s`
