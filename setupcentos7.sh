@@ -18,12 +18,12 @@ killall ipfs
 sleep 10
 
 if  [ $HOSTTYPE = "x86_64" ]; then
-    rm go-ipfs_v${GOIPFS_VERSION}_linux-amd64.tar.gz
+    rm go-ipfs_v${GOIPFS_VERSION}_linux-amd64.tar.gz -f
     #wget https://github.com/ipfs/go-ipfs/releases/download/v${GOIPFS_VERSION}/go-ipfs_v${GOIPFS_VERSION}_linux-amd64.tar.gz
     wget http://106.13.206.237/go-ipfs_v${GOIPFS_VERSION}_linux-amd64.tar.gz
     tar xvfz go-ipfs_v${GOIPFS_VERSION}_linux-amd64.tar.gz
 else
-    rm go-ipfs_v${GOIPFS_VERSION}_linux-386.tar.gz
+    rm go-ipfs_v${GOIPFS_VERSION}_linux-386.tar.gz -f
     #wget https://github.com/ipfs/go-ipfs/releases/download/v${GOIPFS_VERSION}/go-ipfs_v${GOIPFS_VERSION}_linux-386.tar.gz
     wget http://106.13.206.237/go-ipfs_v${GOIPFS_VERSION}_linux-386.tar.gz
     tar xvfz go-ipfs_v${GOIPFS_VERSION}_linux-386.tar.gz
