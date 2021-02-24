@@ -18,7 +18,7 @@ fi
 
 yum -y install psmisc
 
-GOIPFS_VERSION = $1
+export GOIPFS_VERSION=$1
 
 killall ipfs
 sleep 10
