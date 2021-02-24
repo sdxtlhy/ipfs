@@ -20,9 +20,10 @@ yum -y install psmisc
 
 export GO-IPFS_VERSION = $1
 
+killall ipfs
+sleep 10
 rm go-ipfs_v${GO-IPFS_VERSION}_linux-amd64.tar.gz
 rm .ipfs -r -f
-killall ipfs
 rm /usr/local/bin/ipfs
 
 #wget https://github.com/ipfs/go-ipfs/releases/download/v${GO-IPFS_VERSION}/go-ipfs_v${GO-IPFS_VERSION}_linux-amd64.tar.gz
