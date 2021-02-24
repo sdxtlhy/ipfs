@@ -9,12 +9,13 @@ fi
 
 yum -y install psmisc
 
-rm go-ipfs_v0.7.0_linux-amd64.tar.gz
-#wget https://github.com/ipfs/go-ipfs/releases/download/v0.7.0/go-ipfs_v0.7.0_linux-amd64.tar.gz
-#wget http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.7.0_linux-amd64.tar.gz
-wget http://106.13.206.237/go-ipfs_v0.7.0_linux-amd64.tar.gz
+rm go-ipfs_v0.8.0_linux-amd64.tar.gz
+rm .ipfs -r -f
+#wget https://github.com/ipfs/go-ipfs/releases/download/v0.8.0/go-ipfs_v0.8.0_linux-amd64.tar.gz
+#wget http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.8.0_linux-amd64.tar.gz
+wget http://106.13.206.237/go-ipfs_v0.8.0_linux-amd64.tar.gz
 
-tar xvfz go-ipfs_v0.7.0_linux-amd64.tar.gz
+tar xvfz go-ipfs_v0.8.0_linux-amd64.tar.gz
 mv go-ipfs/ipfs /usr/local/bin/ipfs
 
 #初始化ipfs
