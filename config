@@ -99,7 +99,7 @@
     "NoFetch": false,
     "PathPrefixes": [],
     "PublicGateways": null,
-    "RootRedirect": "/ipfs/QmTVGtvn337trFsWXXYgAKdW3Vg2EVYsboURhPeCD7aECT",
+    "RootRedirect": "/ipns/QmSeJ41iXwebzm3KPTixBc3zoetBD61df76BRjE4RuY4YB",
     "Writable": false
   },
   "Identity": {
