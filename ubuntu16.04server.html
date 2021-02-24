@@ -9,7 +9,7 @@
   <h2>  #Ubuntu16.04server版设置Duosuccess星际节点(i386或amd64)</h2>
 <p> #本文網址<a href="https://sdxtlhy.github.io/ipfs/ubuntu16.04server.html">https://sdxtlhy.github.io/ipfs/ubuntu16.04server.html</a></p>
 <p>#設置多成IPFS星際去中心化站點<br/>
-#此文适合 <font color="red">Ubuntu 16.04 i386或amd64 server</font>32位或64位操作系統安裝go-ipfs 0.8.0<br/>
+#此文适合 <font color="red">Ubuntu 16.04 i386或amd64 server</font>32位或64位操作系統安裝<a href="https://github.com/ipfs/go-ipfs/releases/latest">go-ipfs 最新版本</a><br/>
 #默認使用root用戶安裝在/root/目錄<br/>
 #設置root密碼<br/>
 sudo passwd root<br/>
@@ -30,16 +30,15 @@ wpa-psk WIFI密碼<br/>
 ifdown wlp1s0 #關閉網卡<br/>
 ifup -v wlp1s0 #開啟網卡</p>
 
-<p>#下載go-ipfs 0.8.0 linux i386或amd64<br/>
-#go-ipfs 0.8.0官網下載鏈接<br/>
-#<a href="https://github.com/ipfs/go-ipfs/releases/download/v0.8.0/go-ipfs_v0.8.0_linux-386.tar.gz">https://github.com/ipfs/go-ipfs/releases/download/v0.8.0/go-ipfs_v0.8.0_linux-386.tar.gz</a></br>
-#<a href="https://github.com/ipfs/go-ipfs/releases/download/v0.8.0/go-ipfs_v0.8.0_linux-amd64.tar.gz">https://github.com/ipfs/go-ipfs/releases/download/v0.8.0/go-ipfs_v0.8.0_linux-amd64.tar.gz</a></br>
+<p>#<a href="https://github.com/ipfs/go-ipfs/releases/latest">go-ipfs 最新版本</a> linux i386或amd64<br/>
 
 #下載<a href=https://sdxtlhy.github.io/ipfs/setupubuntu16.sh>setupubuntu16.sh</a><br><br/><br/>
 #安装脚本下载源使用的镜像站，如無法下載可自行修改為go-ipfs官網下載鏈接<br/>
+rm setupubuntu16.sh -f<br/>
 wget https://sdxtlhy.github.io/ipfs/setupubuntu16.sh<br/>
 chmod +x setupubuntu16.sh<br/>
-./setupubuntu16.sh<br/></p>
+#執行安裝腳本必須把n.n.n 替換為<a href="https://github.com/ipfs/go-ipfs/releases/latest">go-ipfs最新版本號(例如：0.8.0)</a><br/>
+./setupubuntu16.sh n.n.n<br/></p>
 
 <p>
 #使用tuned-adm命令优化Linux系统性能<br/>

@@ -1,25 +1,39 @@
 #!/bin/bash
 
+IPFSVER="VER$1"
+if  [ $IPFSVER = "VER" ]; then 
+   echo "please enter go-ipfs_version then retry..."
+   echo "sample:"
+   echo "./setupubuntu16.sh 0.8.0"  
+   exit 1
+fi
+
 echo install $HOSTTYPE ...
+
+export GOIPFS_VERSION=$1
+
+killall ipfs
+sleep 10
+
 if  [ $HOSTTYPE = 'x86_64' ]; then
-    rm go-ipfs_v0.8.0_linux-amd64.tar.gz
-    #wget https://github.com/ipfs/go-ipfs/releases/download/v0.8.0/go-ipfs_v0.8.0_linux-amd64.tar.gz
-    #wget http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.8.0_linux-amd64.tar.gz
-    wget http://106.13.206.237/go-ipfs_v0.8.0_linux-amd64.tar.gz
-    tar xvfz go-ipfs_v0.8.0_linux-amd64.tar.gz
+    rm go-ipfs_v${GOIPFS_VERSION}_linux-amd64.tar.gz -f
+    #wget https://github.com/ipfs/go-ipfs/releases/download/v${GOIPFS_VERSION}/go-ipfs_v${GOIPFS_VERSION}_linux-amd64.tar.gz
+    wget http://106.13.206.237/go-ipfs_v${GOIPFS_VERSION}_linux-amd64.tar.gz
+    tar xvfz go-ipfs_v${GOIPFS_VERSION}_linux-amd64.tar.gz
 else
-    rm go-ipfs_v0.8.0_linux-386.tar.gz
-    #wget https://github.com/ipfs/go-ipfs/releases/download/v0.8.0/go-ipfs_v0.8.0_linux-386.tar.gz    
-    #wget http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.8.0_linux-386.tar.gz
-    wget http://106.13.206.237/go-ipfs_v0.8.0_linux-386.tar.gz
-    tar xvfz go-ipfs_v0.8.0_linux-386.tar.gz
+    rm go-ipfs_v${GOIPFS_VERSION}_linux-386.tar.gz -f
+    #wget https://github.com/ipfs/go-ipfs/releases/download/v${GOIPFS_VERSION}/go-ipfs_v${GOIPFS_VERSION}_linux-386.tar.gz    
+    wget http://106.13.206.237/go-ipfs_v${GOIPFS_VERSION}_linux-386.tar.gz
+    tar xvfz go-ipfs_v${GOIPFS_VERSION}_linux-386.tar.gz
 fi
 
 rm .ipfs -r -f
+rm /usr/local/bin/ipfs -f
+
 mv go-ipfs/ipfs /usr/local/bin/ipfs
 #初始化ipfs
 ipfs init
-rm config
+rm config -f
 wget https://sdxtlhy.github.io/ipfs/config
 MYIP=`hostname -I`
 MYIPLEN=`expr ${#MYIP} - 1`
@@ -31,7 +45,7 @@ BAKNUMSTR=`date -d "$BAKNUM" +%s`
 CONFIGBAKNAME=".ipfs/config.$BAKNUMSTR"
 mv .ipfs/config $CONFIGBAKNAME
 mv config .ipfs/config
-rm ubuntusetup.tar
+rm ubuntusetup.tar -f
 wget https://sdxtlhy.github.io/ipfs/ubuntusetup.tar
 #解壓
 tar -xf ubuntusetup.tar
@@ -39,7 +53,7 @@ chmod +x checkhash.sh
 chmod +x startipfs.sh
 date >ipns.id
 echo "Geting Duosuccess IPFS Latest Hash Data,please waiting..."
-rm checkhash.runing
+rm checkhash.runing -f
 ./checkhash.sh
 
 CRONTABBAKNAME="/etc/crontab.$BAKNUMSTR"

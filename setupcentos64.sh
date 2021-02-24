@@ -23,11 +23,12 @@ export GOIPFS_VERSION=$1
 killall ipfs
 sleep 10
 rm go-ipfs_v${GOIPFS_VERSION}_linux-amd64.tar.gz -f
-rm .ipfs -r -f
-rm /usr/local/bin/ipfs -f
 
 #wget https://github.com/ipfs/go-ipfs/releases/download/v${GOIPFS_VERSION}/go-ipfs_v${GOIPFS_VERSION}_linux-amd64.tar.gz
 wget http://106.13.206.237/go-ipfs_v${GOIPFS_VERSION}_linux-amd64.tar.gz
+
+rm .ipfs -r -f
+rm /usr/local/bin/ipfs -f
 
 tar xvfz go-ipfs_v${GOIPFS_VERSION}_linux-amd64.tar.gz
 mv go-ipfs/ipfs /usr/local/bin/ipfs
