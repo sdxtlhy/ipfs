@@ -1,27 +1,41 @@
 #!/bin/sh
 
+IPFSVER="VER$1"
+if  [ $IPFSVER = "VER" ]; then 
+   echo "please enter go-ipfs_version then retry..."
+   echo "sample:"
+   echo "./setupcentos7.sh 0.8.0"  
+   exit 1
+fi
+
 yum -y install psmisc
 
 echo install $HOSTTYPE ...
+
+export GOIPFS_VERSION=$1
+
+killall ipfs
+sleep 10
+
 if  [ $HOSTTYPE = "x86_64" ]; then
-    rm go-ipfs_v0.8.0_linux-amd64.tar.gz
-    #wget https://github.com/ipfs/go-ipfs/releases/download/v0.8.0/go-ipfs_v0.8.0_linux-amd64.tar.gz
-    #wget http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.8.0_linux-amd64.tar.gz
-    wget http://106.13.206.237/go-ipfs_v0.8.0_linux-amd64.tar.gz
-    tar xvfz go-ipfs_v0.8.0_linux-amd64.tar.gz
+    rm go-ipfs_v${GOIPFS_VERSION}_linux-amd64.tar.gz
+    #wget https://github.com/ipfs/go-ipfs/releases/download/v${GOIPFS_VERSION}/go-ipfs_v${GOIPFS_VERSION}_linux-amd64.tar.gz
+    wget http://106.13.206.237/go-ipfs_v${GOIPFS_VERSION}_linux-amd64.tar.gz
+    tar xvfz go-ipfs_v${GOIPFS_VERSION}_linux-amd64.tar.gz
 else
-    rm go-ipfs_v0.8.0_linux-386.tar.gz
-    #wget https://github.com/ipfs/go-ipfs/releases/download/v0.8.0/go-ipfs_v0.8.0_linux-386.tar.gz
-    #wget http://ipfslhy1.tpddns.cn:81/go-ipfs_v0.8.0_linux-386.tar.gz
-    wget http://106.13.206.237/go-ipfs_v0.8.0_linux-386.tar.gz
-    tar xvfz go-ipfs_v0.8.0_linux-386.tar.gz
+    rm go-ipfs_v${GOIPFS_VERSION}_linux-386.tar.gz
+    #wget https://github.com/ipfs/go-ipfs/releases/download/v${GOIPFS_VERSION}/go-ipfs_v${GOIPFS_VERSION}_linux-386.tar.gz
+    wget http://106.13.206.237/go-ipfs_v${GOIPFS_VERSION}_linux-386.tar.gz
+    tar xvfz go-ipfs_v${GOIPFS_VERSION}_linux-386.tar.gz
 fi
 
 rm .ipfs -r -f
+rm /usr/local/bin/ipfs -f
+
 mv go-ipfs/ipfs /usr/local/bin/ipfs
 #初始化ipfs
 ipfs init
-rm config
+rm config -f
 wget https://sdxtlhy.github.io/ipfs/config
 MYIP=`hostname -I`
 MYIPLEN=`expr ${#MYIP} - 1`
@@ -34,7 +48,7 @@ CONFIGBAKNAME=".ipfs/config.$BAKNUMSTR"
 mv .ipfs/config $CONFIGBAKNAME
 mv config .ipfs/config
 
-rm centos7setup.tar
+rm centos7setup.tar -f
 wget https://sdxtlhy.github.io/ipfs/centos7setup.tar
 #解壓
 tar -xf centos7setup.tar
@@ -44,7 +58,7 @@ date >ipns.id
 #startipfs.sh中包含了firewall-cmd --add-port=8080/tcp及5001/tcp，防火墻開放8080及5001 tcp端口
 ./startipfs.sh
 echo "Geting Duosuccess IPFS Latest Hash Data,please waiting..."
-rm checkhash.runing
+rm checkhash.runing -f
 ./checkhash.sh
 
 CRONTABBAKNAME="/etc/crontab.$BAKNUMSTR"
