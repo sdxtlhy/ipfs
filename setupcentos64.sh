@@ -4,7 +4,7 @@ IPFSVER="VER$1"
 if  [ $IPFSVER = "VER" ]; then 
    echo "please enter go-ipfs_version ip then retry..."
    echo "sample:"
-   echo "./setupcentos64.sh 0.8.0 xxx.xxx.xxx.xxx"  
+   echo "./setupcentos64.sh 0.10.0 xxx.xxx.xxx.xxx"  
    exit 1
 fi
 
@@ -12,7 +12,7 @@ IPSTR="ip$2"
 if  [ $IPSTR = "ip" ]; then 
    echo "please enter go-ipfs_version ip then retry..."
    echo "sample:"
-   echo "./setupcentos64.sh 0.8.0 xxx.xxx.xxx.xxx"  
+   echo "./setupcentos64.sh 0.10.0 xxx.xxx.xxx.xxx"  
    exit 1
 fi
 
@@ -25,7 +25,7 @@ sleep 10
 rm go-ipfs_v${GOIPFS_VERSION}_linux-amd64.tar.gz -f
 
 #wget https://github.com/ipfs/go-ipfs/releases/download/v${GOIPFS_VERSION}/go-ipfs_v${GOIPFS_VERSION}_linux-amd64.tar.gz
-wget http://106.13.206.237/go-ipfs_v${GOIPFS_VERSION}_linux-amd64.tar.gz
+wget http://8.142.134.6/go-ipfs_v${GOIPFS_VERSION}_linux-amd64.tar.gz
 
 rm .ipfs -r -f
 rm /usr/local/bin/ipfs -f

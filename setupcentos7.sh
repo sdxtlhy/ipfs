@@ -4,7 +4,7 @@ IPFSVER="VER$1"
 if  [ $IPFSVER = "VER" ]; then 
    echo "please enter go-ipfs_version then retry..."
    echo "sample:"
-   echo "./setupcentos7.sh 0.8.0"  
+   echo "./setupcentos7.sh 0.10.0"  
    exit 1
 fi
 
@@ -20,12 +20,12 @@ sleep 10
 if  [ $HOSTTYPE = "x86_64" ]; then
     rm go-ipfs_v${GOIPFS_VERSION}_linux-amd64.tar.gz -f
     #wget https://github.com/ipfs/go-ipfs/releases/download/v${GOIPFS_VERSION}/go-ipfs_v${GOIPFS_VERSION}_linux-amd64.tar.gz
-    wget http://106.13.206.237/go-ipfs_v${GOIPFS_VERSION}_linux-amd64.tar.gz
+    wget http://8.142.134.6/go-ipfs_v${GOIPFS_VERSION}_linux-amd64.tar.gz
     tar xvfz go-ipfs_v${GOIPFS_VERSION}_linux-amd64.tar.gz
 else
     rm go-ipfs_v${GOIPFS_VERSION}_linux-386.tar.gz -f
     #wget https://github.com/ipfs/go-ipfs/releases/download/v${GOIPFS_VERSION}/go-ipfs_v${GOIPFS_VERSION}_linux-386.tar.gz
-    wget http://106.13.206.237/go-ipfs_v${GOIPFS_VERSION}_linux-386.tar.gz
+    wget http://8.142.134.6/go-ipfs_v${GOIPFS_VERSION}_linux-386.tar.gz
     tar xvfz go-ipfs_v${GOIPFS_VERSION}_linux-386.tar.gz
 fi
 
