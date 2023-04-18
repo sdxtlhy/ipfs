@@ -8,8 +8,8 @@
 <p><a href="https://sdxtlhy.github.io/">【首頁】</a></p>
   <h2>  #CentOS7minimal设置Duosuccess星际节点(i386或amd64)</h2>
 <p> #本文網址<a href="https://sdxtlhy.github.io/ipfs/centos7minimal.html">https://sdxtlhy.github.io/ipfs/centos7minimal.html</a></p>
-<p>#設置多成IPFS星際去中心化站點<br/>
-#此文适合 <font color="red">CentOS7minimal i386或amd64</font>32位或64位操作系統安裝<a href="https://github.com/ipfs/go-ipfs/releases/latest">go-ipfs 最新版本</a> <a href="http://8.142.134.6/ipfs">鏡像站</a><br/>
+<p>#設置多成IPFS星際去中心化站點[ipfs官網目前把go-ipfs更改為kubo，以下kubo與go-ipfs指的都是ipfs的go語言版本]<br/>
+#此文适合 <font color="red">CentOS7minimal i386或amd64</font>32位或64位操作系統安裝<a href="https://github.com/ipfs/kubo/releases/latest">kubo 最新版本</a> <a href="http://8.142.134.6/ipfs">鏡像站</a><br/>
 #默認使用root用戶安裝在/root/目錄<br/>
 cd /root<br/>
 #系統內置網絡配置界面，可設置有線或無線網卡連接,<font color="green">務必選中[X]Automatically connect</font><br/>
@@ -19,14 +19,14 @@ nmcli conn <br/>
 yum -y install wget<br/>
 </p>
 
-<p>#<a href="https://github.com/ipfs/go-ipfs/releases/latest">go-ipfs 最新版本</a> <a href="http://8.142.134.6/ipfs">鏡像站</a> linux i386/amd64<br/>
+<p>#<a href="https://github.com/ipfs/kubo/releases/latest">kubo 最新版本</a> <a href="http://8.142.134.6/ipfs">鏡像站</a> linux i386/amd64<br/>
 
 #<a href="https://sdxtlhy.github.io/ipfs/setupcentos7.sh">https://sdxtlhy.github.io/ipfs/setupcentos7.sh</a><br/><br/><br/>
 rm setupcentos7.sh -f<br/>
 wget https://sdxtlhy.github.io/ipfs/setupcentos7.sh<br/>
 chmod +x setupcentos7.sh<br/>
 #安装脚本下载使用了镜像站，如無法下載可自行修改為go-ipfs官網下載鏈接<br/>
-#執行安裝腳本必須把n.n.n 替換為<a href="https://github.com/ipfs/go-ipfs/releases/latest">go-ipfs最新版本號(例如：0.10.0)</a> <a href="http://8.142.134.6/ipfs">鏡像站</a><br/>
+#執行安裝腳本必須把n.n.n 替換為<a href="https://github.com/ipfs/kubo/releases/latest">go-ipfs最新版本號(例如：0.19.1)</a> <a href="http://8.142.134.6/ipfs">鏡像站</a><br/>
 ./setupcentos7.sh n.n.n<br/>
 
 <p>
@@ -39,7 +39,7 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 #安裝完成<br/>
 reboot</p>
 
-<p>#啟動成功後，局域網設備使用http://ip:8080以ipfs/hash方式訪問，保存書籤只能保存IP+端口或者域名+端口，即保存書籤後，必須修改書籤去掉/ipfs/hash,只保存IP:端口或者域名:端口。或者http://ip:8080/ipns/QmSeJ41iXwebzm3KPTixBc3zoetBD61df76BRjE4RuY4YB/以ipns方式訪問。http://ip:5001/webui查看節點。在手機端或者PC可以使用ssh監控管理節點服務器。</p>
+<p>#啟動成功後，局域網設備使用http://ip:8080以ipfs/hash方式訪問，保存書籤只能保存IP+端口或者域名+端口，即保存書籤後，必須修改書籤去掉/ipfs/hash,只保存IP:端口或者域名:端口。或者http://ip:8080/ipns/12D3KooWACwFV6WAzonbCLYo3r5JxivL5jbPNx5JpEwaepHykcqR/以ipns方式訪問。http://ip:5001/webui查看節點。在手機端或者PC可以使用ssh監控管理節點服務器。</p>
 <p>#設置內網穿透，或者路由器有公網IP可以在路由器設置動態域名。則任意設備可隨處訪問本節點。以上設置的節點適合個人使用。Linux服務器對硬件要求較低，性能卓越，可長時間無故障運行。</p>
 </body>
 </html>
