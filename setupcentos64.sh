@@ -22,22 +22,23 @@ export GOIPFS_VERSION=$1
 
 killall ipfs
 sleep 10
-rm go-ipfs_v${GOIPFS_VERSION}_linux-amd64.tar.gz -f
+rm kubo_v${GOIPFS_VERSION}_linux-amd64.tar.gz -f
 
-#wget https://github.com/ipfs/go-ipfs/releases/download/v${GOIPFS_VERSION}/go-ipfs_v${GOIPFS_VERSION}_linux-amd64.tar.gz
-wget http://8.142.134.6/go-ipfs_v${GOIPFS_VERSION}_linux-amd64.tar.gz
+#wget https://github.com/ipfs/kubo/releases/download/v${GOIPFS_VERSION}/kubo_v${GOIPFS_VERSION}_linux-amd64.tar.gz
+wget http://8.142.134.6/kubo_v${GOIPFS_VERSION}_linux-amd64.tar.gz
 
 rm .ipfs -r -f
 rm /usr/local/bin/ipfs -f
 
-tar xvfz go-ipfs_v${GOIPFS_VERSION}_linux-amd64.tar.gz
-mv go-ipfs/ipfs /usr/local/bin/ipfs
+tar xvfz kubo_v${GOIPFS_VERSION}_linux-amd64.tar.gz
+mv kubo/ipfs /usr/local/bin/ipfs
 
 #初始化ipfs
 ipfs init
 rm config -f
 wget https://sdxtlhy.github.io/ipfs/config
 sed -i "s/192.168.0.200/$2/g" config
+sed -i "s/QmSeJ41iXwebzm3KPTixBc3zoetBD61df76BRjE4RuY4YB/12D3KooWACwFV6WAzonbCLYo3r5JxivL5jbPNx5JpEwaepHykcqR/g" config
 
 BAKNUM=`date +"%Y-%m-%d %H:%M:%S"`
 BAKNUMSTR=`date -d "$BAKNUM" +%s`
@@ -49,6 +50,8 @@ rm centos7setup.tar -f
 wget https://sdxtlhy.github.io/ipfs/centos7setup.tar
 #解壓
 tar -xf centos7setup.tar
+sed -i "s/QmSeJ41iXwebzm3KPTixBc3zoetBD61df76BRjE4RuY4YB/12D3KooWACwFV6WAzonbCLYo3r5JxivL5jbPNx5JpEwaepHykcqR/g" checkhash.sh
+
 chmod +x checkhash.sh
 chmod +x startipfs.sh
 date >ipns.id
